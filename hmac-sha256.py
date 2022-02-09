@@ -1,6 +1,7 @@
 # ref: https://code.activestate.com/recipes/576980/
 # PyCrypto-based authenticated symetric encryption
-import cPickle as pickle
+# import cPickle as pickle
+import pickle
 import hashlib
 import hmac
 import os
