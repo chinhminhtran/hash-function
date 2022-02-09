@@ -28,7 +28,7 @@ class Crypticle(object):
 
     @classmethod
     def generate_key_string(cls, key_size=192):
-        key = os.urandom(key_size / 8 + cls.SIG_SIZE)
+        key = os.urandom(int(key_size / 8) + cls.SIG_SIZE)
         return key.encode("base64").replace("\n", "")
 
     @classmethod
