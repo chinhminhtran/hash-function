@@ -9,7 +9,7 @@ size = 5
 
 # Using os.urandom() method
 result = os.urandom(size)
-chuyenchuoi = result.encode()
+chuyenchuoi = result.encode("base64")
 
 # Print the random bytes string
 # Output will be different everytime
