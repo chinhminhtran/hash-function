@@ -1,6 +1,6 @@
 # ref: https://code.activestate.com/recipes/576980/
 # PyCrypto-based authenticated symetric encryption
-# import cPickle as pickle
+
 import pickle
 import hashlib
 import hmac
@@ -29,7 +29,7 @@ class Crypticle(object):
     @classmethod
     def generate_key_string(cls, key_size=192):
         key = os.urandom(int(key_size / 8) + cls.SIG_SIZE)
-        return key.encode("base64",errors="xmlcharrefreplace").replace("\n", "")
+        return key.encode("base64").replace("\n", "")
     # test push lan 4
 
     @classmethod
