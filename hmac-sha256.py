@@ -30,7 +30,6 @@ class Crypticle(object):
     def generate_key_string(cls, key_size=192):
         key = os.urandom(int(key_size / 8) + cls.SIG_SIZE)
         return key.encode("base64").replace("\n", "")
-    # test push lan 4
 
     @classmethod
     def extract_keys(cls, key_string, key_size):
