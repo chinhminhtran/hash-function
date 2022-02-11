@@ -63,7 +63,7 @@ class Crypticle(object):
 
     def dumps(self, obj, pickler=pickle):
         """pickle and encrypt a python object"""
-        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj))
+        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj).decode())
 
     def loads(self, data, pickler=pickle):
         """decrypt and unpickle a python object"""
