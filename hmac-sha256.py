@@ -79,6 +79,9 @@ if __name__ == "__main__":
     data = {"dict": "full", "of": "secrets"}
     crypt = Crypticle(key)
     safe = crypt.dumps(data)
+    data = data[:-data[-1]]
+    print(type(data))
+    print(data)
     assert data == crypt.loads(safe)
     print
     "encrypted data:"
