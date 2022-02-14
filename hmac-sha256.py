@@ -59,7 +59,7 @@ class Crypticle(object):
         data = data[self.AES_BLOCK_SIZE:]
         cypher = AES.new(aes_key, AES.MODE_CBC, iv_bytes)
         data = cypher.decrypt(data)
-        return data[:-ord(data[-1])]
+        return data[:-data[-1]]
 
     def dumps(self, obj, pickler=pickle):
         """pickle and encrypt a python object"""
