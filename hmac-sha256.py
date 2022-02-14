@@ -77,13 +77,10 @@ if __name__ == "__main__":
     # usage example
     key = Crypticle.generate_key_string()
     data = {"dict": "full", "of": "secrets"}
-    print(data)
-    print(type(data))
     crypt = Crypticle(key)
     safe = crypt.dumps(data)
-    data = data[:-data[-1]]
-    print(type(data))
-    print(data)
+    print(type(safe))
+    print(safe)
     assert data == crypt.loads(safe)
     print
     "encrypted data:"
