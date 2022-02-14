@@ -1,6 +1,6 @@
 # ref: https://code.activestate.com/recipes/576980/
 # PyCrypto-based authenticated symetric encryption
-# import cPickle as pickle
+
 import pickle
 import hashlib
 import hmac
@@ -29,12 +29,11 @@ class Crypticle(object):
     @classmethod
     def generate_key_string(cls, key_size=192):
         key = os.urandom(int(key_size / 8) + cls.SIG_SIZE)
-        return key.encode("base64",errors="xmlcharrefreplace").replace("\n", "")
-    # test push
+        return key
 
     @classmethod
     def extract_keys(cls, key_string, key_size):
-        key = key_string.decode("base64")
+        key = key_string
         assert len(key) == key_size / 8 + cls.SIG_SIZE, "invalid key"
         return key[:-cls.SIG_SIZE], key[-cls.SIG_SIZE:]
 
@@ -60,15 +59,19 @@ class Crypticle(object):
         data = data[self.AES_BLOCK_SIZE:]
         cypher = AES.new(aes_key, AES.MODE_CBC, iv_bytes)
         data = cypher.decrypt(data)
-        return data[:-ord(data[-1])]
+        return data[:-data[-1]]
 
     def dumps(self, obj, pickler=pickle):
         """pickle and encrypt a python object"""
-        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj))
+        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj).decode('utf-8', 'ignore'))
 
     def loads(self, data, pickler=pickle):
         """decrypt and unpickle a python object"""
         data = self.decrypt(data)
+        print(data)
+        print(type(data))
+        print(self.PICKLE_PAD)
+        print(type(self.PICKLE_PAD))
         # simple integrity check to verify that we got meaningful data
         assert data.startswith(self.PICKLE_PAD), "unexpected header"
         return pickler.loads(data[len(self.PICKLE_PAD):])
