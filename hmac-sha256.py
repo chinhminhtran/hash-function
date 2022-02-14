@@ -72,7 +72,7 @@ class Crypticle(object):
         print(type(data))
         print(self.PICKLE_PAD)
         print(type(self.PICKLE_PAD))
-        temp_var = startswith(self.PICKLE_PAD)
+        temp_var = temp_var.startswith(self.PICKLE_PAD)
         print(temp_var)
         print(type(temp_var))
         # simple integrity check to verify that we got meaningful data
