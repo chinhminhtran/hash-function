@@ -73,7 +73,7 @@ class Crypticle(object):
         print(self.PICKLE_PAD)
         print(type(self.PICKLE_PAD))
         # simple integrity check to verify that we got meaningful data
-        assert data.startswith(self.PICKLE_PAD), "unexpected header"
+        assert data.decode().startswith(self.PICKLE_PAD), "unexpected header"
         return pickler.loads(data[len(self.PICKLE_PAD):])
 
 
