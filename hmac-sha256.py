@@ -72,9 +72,9 @@ class Crypticle(object):
         print(type(data))
         print(self.PICKLE_PAD)
         print(type(self.PICKLE_PAD))
-        temp-var = startswith(self.PICKLE_PAD)
-        print(temp-var)
-        print(type(temp-var))
+        temp_var = startswith(self.PICKLE_PAD)
+        print(temp_var)
+        print(type(temp_var))
         # simple integrity check to verify that we got meaningful data
         assert data.startswith(self.PICKLE_PAD), "unexpected header"
         return pickler.loads(data[len(self.PICKLE_PAD):])
