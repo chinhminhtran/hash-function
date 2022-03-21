@@ -76,7 +76,7 @@ class Crypticle(object):
         assert data.decode('utf-8', 'ignore').startswith(self.PICKLE_PAD), "unexpected header"
         print(self.PICKLE_PAD)
         print(type(self.PICKLE_PAD))
-        return pickler.loads(data[len(self.PICKLE_PAD):].encode('base64', 'ignore'))
+        return pickler.loads(data[len(self.PICKLE_PAD):].decode('base64', 'ignore'))
 
 
 if __name__ == "__main__":
