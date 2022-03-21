@@ -63,7 +63,7 @@ class Crypticle(object):
 
     def dumps(self, obj, pickler=pickle):
         """pickle and encrypt a python object"""
-        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj).decode('utf-8', 'ignore'))
+        return self.encrypt(self.PICKLE_PAD + pickler.dumps(obj).decode('base64', 'ignore'))
 
     def loads(self, data, pickler=pickle):
         """decrypt and unpickle a python object"""
@@ -76,7 +76,7 @@ class Crypticle(object):
         assert data.decode('utf-8', 'ignore').startswith(self.PICKLE_PAD), "unexpected header"
         print(self.PICKLE_PAD)
         print(type(self.PICKLE_PAD))
-        return pickler.loads(data[len(self.PICKLE_PAD):].encode('utf-8', 'ignore'))
+        return pickler.loads(data[len(self.PICKLE_PAD):].encode('base64', 'ignore'))
 
 
 if __name__ == "__main__":
